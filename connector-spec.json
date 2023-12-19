@@ -1,0 +1,414 @@
+{
+    "name": "NonEmployeeRiskManagement",
+    "commands": [
+        "std:test-connection",
+        "std:account:list",
+        "std:account:read",
+        "std:account:discover-schema",
+        "std:entitlement:list",
+        "std:entitlement:read"
+    ],
+    "sourceConfig": [
+        {
+            "type": "menu",
+            "label": "Configuration",
+            "items": [
+                {
+                    "type": "section",
+                    "sectionTitle": "Non-Employee Risk Management connection details",
+                    "sectionHelpMessage": "Add your connection details here",
+                    "items": [
+                        {
+                            "key": "url",
+                            "label": "Non-Employee Risk Management API URL",
+                            "type": "url",
+                            "required": true
+                        },
+                        {
+<<<<<<< HEAD
+                            "key": "token",
+                            "label": "API token",
+||||||| 38659b7
+                            "key": "auth",
+                            "label": "Authentication mode",
+                            "type": "radio",
+                            "required": true,
+                            "options": [
+                                {
+                                    "label": "Basic Authentication",
+                                    "value": "auth.basic"
+                                },
+                                {
+                                    "label": "Bearer token",
+                                    "value": "auth.token"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "token.value",
+                            "label": "Bearer token",
+                            "type": "text",
+                            "parentKey": "auth",
+                            "parentValue": "auth.token",
+                            "required": true
+                        },
+                        {
+                            "key": "basic.username",
+                            "label": "User name",
+                            "type": "text",
+                            "parentKey": "auth",
+                            "parentValue": "auth.basic",
+                            "required": true
+                        },
+                        {
+                            "key": "basic.password",
+                            "label": "Password",
+=======
+                            "key": "auth",
+                            "label": "Authentication mode",
+                            "type": "radio",
+                            "required": true,
+                            "options": [
+                                {
+                                    "label": "Basic Authentication",
+                                    "value": "auth.basic"
+                                },
+                                {
+                                    "label": "Bearer token",
+                                    "value": "auth.token"
+                                }
+                            ]
+                        },
+                        {
+                            "key": "token.value",
+                            "label": "Bearer token",
+                            "type": "secret",
+                            "parentKey": "auth",
+                            "parentValue": "auth.token",
+                            "required": true
+                        },
+                        {
+                            "key": "basic.username",
+                            "label": "User name",
+                            "type": "text",
+                            "parentKey": "auth",
+                            "parentValue": "auth.basic",
+                            "required": true
+                        },
+                        {
+                            "key": "basic.password",
+                            "label": "Password",
+>>>>>>> 069e23a9a51561f3cb7319621e7c6d3b0f2cb9e4
+                            "type": "secret",
+                            "required": true
+                        }
+                    ]
+                },
+                {
+                    "type": "section",
+                    "sectionTitle": "Configuration details",
+                    "sectionHelpMessage": "Add your configuration details here",
+                    "items": [
+                        {
+                            "key": "mode",
+                            "label": "Aggregation mode",
+                            "type": "radio",
+                            "required": true,
+                            "options": [
+                                {
+                                    "label": "User",
+                                    "value": "user"
+                                },
+                                {
+                                    "label": "Profile",
+                                    "value": "profile"
+                                }
+                            ]
+<<<<<<< HEAD
+                        },
+                        {
+                            "key": "profile",
+                            "label": "Profile name",
+                            "type": "text",
+                            "parentKey": "mode",
+                            "parentValue": "profile",
+                            "required": true
+                        },
+                        {
+                            "key": "groups",
+                            "label": "Associated profile names (create a basic group schema for each)",
+                            "type": "list",
+                            "parentKey": "mode",
+                            "parentValue": "profile",
+                            "required": false
+                        },
+                        {
+                            "key": "filter",
+                            "label": "Search filter",
+                            "type": "text",
+                            "parentKey": "mode",
+                            "parentValue": "profile",
+                            "required": false
+||||||| 38659b7
+=======
+                        },
+                        {
+                            "key": "search",
+                            "label": "Search filter",
+                            "type": "text",
+                            "required": false
+>>>>>>> 069e23a9a51561f3cb7319621e7c6d3b0f2cb9e4
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "accountSchema": {
+        "displayAttribute": "name",
+        "identityAttribute": "id",
+        "attributes": [
+            {
+                "name": "id",
+                "type": "string",
+                "description": "id"
+            },
+            {
+                "name": "name",
+                "type": "string",
+                "description": "name"
+            }
+        ]
+    },
+    "entitlementSchemas": [
+        {
+            "type": "group",
+            "identityAttribute": "id",
+            "displayAttribute": "name",
+            "attributes": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "id"
+                },
+                {
+                    "name": "name",
+                    "type": "string",
+                    "description": "name"
+                }
+            ]
+        }
+<<<<<<< HEAD
+    ]
+||||||| 38659b7
+    ],
+    "accountCreateTemplate": {
+        "fields": [
+            {
+                "key": "LAST_NAME",
+                "label": "LAST_NAME",
+                "type": "string",
+                "required": true
+            },
+            {
+                "key": "IDENTIFICATION",
+                "label": "IDENTIFICATION",
+                "type": "string",
+                "required": true
+            },
+            {
+                "key": "LOGIN",
+                "label": "LOGIN",
+                "type": "string",
+                "required": true
+            },
+            {
+                "key": "E_MAIL",
+                "label": "E_MAIL",
+                "type": "string",
+                "required": true
+            },
+            {
+                "key": "PHONE_NUMBER",
+                "label": "PHONE_NUMBER",
+                "type": "string",
+                "required": false
+            },
+            {
+                "key": "MANAGER_ID",
+                "label": "MANAGER_ID",
+                "type": "string",
+                "required": false
+            },
+            {
+                "key": "BEGIN_OF_CONTRACT",
+                "label": "BEGIN_OF_CONTRACT",
+                "type": "string",
+                "required": false
+            },
+            {
+                "key": "END_OF_CONTRACT",
+                "label": "END_OF_CONTRACT",
+                "type": "string",
+                "required": false
+            },
+            {
+                "key": "PROFIL_ID",
+                "label": "PROFIL_ID",
+                "type": "string",
+                "required": false
+            },
+            {
+                "key": "LOCATION_ID",
+                "label": "LOCATION_ID",
+                "type": "string",
+                "required": false
+            },
+            {
+                "key": "DEPARTMENT_ID",
+                "label": "DEPARTMENT_ID",
+                "type": "string",
+                "required": false
+            }
+        ]
+    }
+=======
+    ],
+    "accountCreateTemplate": {
+        "fields": [
+            {
+                "key": "LAST_NAME",
+                "label": "LAST_NAME",
+                "type": "string",
+                "required": true,
+                "initialValue": {
+                    "type": "identityAttribute",
+                    "attributes": {
+                        "name": "lastname"
+                    }
+                }
+            },
+            {
+                "key": "IDENTIFICATION",
+                "label": "IDENTIFICATION",
+                "type": "string",
+                "required": true,
+                "initialValue": {
+                    "type": "identityAttribute",
+                    "attributes": {
+                        "name": "uid"
+                    }
+                }
+            },
+            {
+                "key": "LOGIN",
+                "label": "LOGIN",
+                "type": "string",
+                "required": true,
+                "initialValue": {
+                    "type": "identityAttribute",
+                    "attributes": {
+                        "name": "uid"
+                    }
+                }
+            },
+            {
+                "key": "E_MAIL",
+                "label": "E_MAIL",
+                "type": "string",
+                "required": true,
+                "initialValue": {
+                    "type": "identityAttribute",
+                    "attributes": {
+                        "name": "email"
+                    }
+                }
+            },
+            {
+                "key": "PHONE_NUMBER",
+                "label": "PHONE_NUMBER",
+                "type": "string",
+                "required": false,
+                "initialValue": {
+                    "type": "identityAttribute",
+                    "attributes": {
+                        "name": "workPhone"
+                    }
+                }
+            },
+            {
+                "key": "MANAGER_ID",
+                "label": "MANAGER_ID",
+                "type": "string",
+                "required": false,
+                "initialValue": {
+                    "type": "static",
+                    "attributes": {
+                        "value": ""
+                    }
+                }
+            },
+            {
+                "key": "BEGIN_OF_CONTRACT",
+                "label": "BEGIN_OF_CONTRACT",
+                "type": "string",
+                "required": false,
+                "initialValue": {
+                    "type": "identityAttribute",
+                    "attributes": {
+                        "name": "startDate"
+                    }
+                }
+            },
+            {
+                "key": "END_OF_CONTRACT",
+                "label": "END_OF_CONTRACT",
+                "type": "string",
+                "required": false,
+                "initialValue": {
+                    "type": "identityAttribute",
+                    "attributes": {
+                        "name": "endDate"
+                    }
+                }
+            },
+            {
+                "key": "PROFIL_ID",
+                "label": "PROFIL_ID",
+                "type": "string",
+                "required": false,
+                "initialValue": {
+                    "type": "static",
+                    "attributes": {
+                        "value": ""
+                    }
+                }
+            },
+            {
+                "key": "LOCATION_ID",
+                "label": "LOCATION_ID",
+                "type": "string",
+                "required": false,
+                "initialValue": {
+                    "type": "static",
+                    "attributes": {
+                        "value": ""
+                    }
+                }
+            },
+            {
+                "key": "DEPARTMENT_ID",
+                "label": "DEPARTMENT_ID",
+                "type": "string",
+                "required": false,
+                "initialValue": {
+                    "type": "static",
+                    "attributes": {
+                        "value": ""
+                    }
+                }
+            }
+        ]
+    }
+>>>>>>> 069e23a9a51561f3cb7319621e7c6d3b0f2cb9e4
+}
